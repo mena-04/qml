@@ -104,6 +104,6 @@ The project was informed by a Scopus AI literature survey on quantum kernel lear
 
 - **Dataset:** Wisconsin Diagnostic Breast Cancer dataset, accessed through `sklearn.datasets.load_breast_cancer` (original dataset by Wolberg, Street, and Mangasarian).
 - **Tools:** PennyLane, PyTorch, scikit-learn, NumPy, pandas.
-- **Competition approach:** strong classical baselines, purposeful quantum integration, matched data splits, clinically meaningful metrics, and honest computational trade-offs.
+- **Our plan:** strong classical baselines, purposeful quantum integration, matched data splits, clinically meaningful metrics, and honest computational trade-offs.
 
 **Research prototype only — not for clinical decision-making.**
