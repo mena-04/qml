@@ -1,0 +1,10 @@
+n_samples,model,roc_auc,recall,f1,specificity,runtime_seconds
+40,Classical MLP,0.9534,0.7333,0.8228,0.9861,0.0664
+40,Classical Residual,0.9568,0.7556,0.8182,0.9599,0.1015
+40,Quantum Residual,0.9673,0.7333,0.8129,0.9738,39.8915
+80,Classical MLP,0.9624,0.7667,0.8352,0.9734,0.0677
+80,Classical Residual,0.9768,0.7778,0.8503,0.9796,0.1094
+80,Quantum Residual,0.9756,0.7889,0.8599,0.9796,78.8541
+160,Classical MLP,0.9862,0.7722,0.861,0.9966,0.0682
+160,Classical Residual,0.9867,0.8222,0.8882,0.9901,0.1079
+160,Quantum Residual,0.9881,0.85,0.9125,0.9933,159.168
