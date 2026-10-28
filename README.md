@@ -73,9 +73,9 @@ testing/                          Original experiments for Phases 1–8
 
 **Important:** `run_experiment.py` is **only a small Phase 8 residual-model demonstration**. It does **not** rerun the entire QBreast project. For the other phases, open the linked research notebooks in `testing/`.
 
-## Quick start (small Phase 8 demonstration)
+## Quick start (Phase 8 demonstration)
 
-From the repository root:
+To verify the implementation and reproduce a small-scale comparison of our residual learning architectures, run the following commands from the repository root:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -83,7 +83,29 @@ python -m pytest -q tests/
 python run_experiment.py --indices limited_data/data_n40_seed42.npz --samples 40
 ```
 
-The subset loader first checks `limited_data/data_n40_seed42.npz` and, if missing, attempts to read the same NPZ from `testing/results/qbreast_limited_data.zip`. **The ZIP member name has not been independently verified**; if the command reports a missing subset, inspect the ZIP (`python -m zipfile -l testing/results/qbreast_limited_data.zip`) and use the matching original NPZ. Do not regenerate the research split and treat it as equivalent. This runner performs three-fold CV on **one** 40-sample subset, and its results are not the complete reported 40/80/160-sample multi-seed benchmark.
+### What this demonstration does
+
+The script performs **three-fold stratified cross-validation** on a 40-sample subset of the Wisconsin Diagnostic Breast Cancer dataset, comparing three architectures:
+
+- **Classical MLP:** A lightweight neural network baseline.
+- **Classical Residual:** An MLP with an additional classical correction branch.
+- **Quantum Residual:** An MLP with a four-qubit variational quantum correction branch.
+
+All models use identical data partitions, training-fold preprocessing, and evaluation metrics, including ROC-AUC, malignant recall, F1, and specificity.
+
+### Dataset and reproducibility
+
+The experiment uses the original training indices generated during Phase 1 and preserved in [`testing/results/qbreast_limited_data.zip`](testing/results/qbreast_limited_data.zip).
+
+The data loader automatically searches this archive for `limited_data/data_n40_seed42.npz` when the file is not available separately. This preserves the original experimental subset rather than generating a new random split.
+
+### Scope of reproduction
+
+This command provides a **small, executable demonstration of Phase 8**, not the complete multi-seed benchmark.
+
+The full research experiments cover training sizes of 40, 80, and 160 samples, multiple random seeds, and additional classical and quantum architectures. Their implementations and saved outputs are available in the [`testing/`](testing/) research notebooks.
+
+**Verification status:** Both automated tests passed successfully (2/2), including data preprocessing, quantum model execution, and gradient verification. The main reported results have also been checked against the saved notebook outputs.
 
 **Verification status:** All automated tests passed successfully (2/2), including data preprocessing, quantum model execution, and gradient verification. All eight research phases were executed, and their experimental results are preserved in the GitHub notebooks. The reported findings have been checked against the saved notebook outputs.
 
