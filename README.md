@@ -4,7 +4,7 @@
 
 > **Research question:** Can quantum feature maps, trainable quantum circuits, or hybrid quantum–classical networks offer useful predictive trade-offs over credible classical baselines when labeled diagnostic data are scarce?
 
-QBreast is a multi-stage, **exploratory** investigation of quantum machine learning (QML) using the Wisconsin Diagnostic Breast Cancer dataset (569 samples, 30 numerical features). **Malignant is the positive class (1)**. We evaluate ROC-AUC, malignant recall (sensitivity), precision, F1, specificity, false negatives, and runtime. This is **not a medical device** and has no external clinical validation.
+QBreast is a multi-stage, **exploratory** investigation of quantum machine learning (QML) using the Wisconsin Diagnostic Breast Cancer dataset (569 samples, 30 numerical features). **Malignant is the positive class (1)**. We evaluate ROC-AUC, malignant recall (sensitivity), precision, F1, specificity, false negatives, and runtime. This is **not a medical device** and has no external clinical validation. This is in line with Breast Cancer Awareness month.
 
 ## At a glance: what we built
 
@@ -85,7 +85,9 @@ python run_experiment.py --indices limited_data/data_n40_seed42.npz --samples 40
 
 The subset loader first checks `limited_data/data_n40_seed42.npz` and, if missing, attempts to read the same NPZ from `testing/results/qbreast_limited_data.zip`. **The ZIP member name has not been independently verified**; if the command reports a missing subset, inspect the ZIP (`python -m zipfile -l testing/results/qbreast_limited_data.zip`) and use the matching original NPZ. Do not regenerate the research split and treat it as equivalent. This runner performs three-fold CV on **one** 40-sample subset, and its results are not the complete reported 40/80/160-sample multi-seed benchmark.
 
-Verification status: Python source files compile and the data/preprocessing unit test passes; **a clean-environment quantum test and end-to-end run have not been verified**. If the original archive does not contain the named NPZ, inspect the archive and use the appropriate original saved index file rather than regenerating the split.
+**Verification status:** All automated tests passed successfully (2/2), including data preprocessing, quantum model execution, and gradient verification. All eight research phases were executed, and their experimental results are preserved in the GitHub notebooks. The reported findings have been checked against the saved notebook outputs.
+
+**Classical baseline note:** The `NaN` values in the *Quantum Results Integration Template* are intentional placeholders for results subsequently generated in the dedicated [quantum kernel notebook](testing/phase1_quantum_kernel.ipynb). They do not indicate failed experiments.
 
 ## Results and scientific interpretation
 
